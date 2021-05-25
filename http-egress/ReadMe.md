@@ -1,6 +1,7 @@
 ##  envoy egress proxy测试
 
 [root@k8smaster http-egress]# docker exec    -it   httpegress_envoy_1   sh 
+跟据语法定义访问ik8s.io 有多个后端应用，可以看出轮询效果
 ```
 ~ # ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
@@ -16,5 +17,15 @@ This is a website server by a Go HTTP server.
 ~ # curl  -H  "host: www.ik8s.io" 127.0.0.1/hostname
 Hostname: 11bbc59d9753.
 ~ # curl  -H  "host: www.ik8s.io" 127.0.0.1/hostname
+Hostname: 2a6eb8a78247.
+```
+跟据语法定义访问k8scast.cn 只有一个后端应用，不会有轮询效果
+
+```
+/ # curl  -H "host: www.k8scast.cn" 127.0.0.1
+This is a website server by a Go HTTP server.
+/ # curl  -H "host: www.k8scast.cn" 127.0.0.1/hostname
+Hostname: 2a6eb8a78247.
+/ # curl  -H "host: www.k8scast.cn" 127.0.0.1/hostname
 Hostname: 2a6eb8a78247.
 ```
