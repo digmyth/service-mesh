@@ -1,8 +1,9 @@
 ##  envoy egress proxy测试
 
-[root@k8smaster http-egress]# docker exec    -it   httpegress_envoy_1   sh 
+ 
 跟据语法定义访问ik8s.io 有多个后端应用，可以看出轮询效果
 ```
+[root@k8smaster http-egress]# docker exec    -it   httpegress_envoy_1   sh
 ~ # ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
