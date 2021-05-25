@@ -1,5 +1,6 @@
 ### 测试过程
 
+由于是ingress,直接访问envoy中定义的envoy_ip:80端口即可
 ```
 cd service-mesh/http-ingress;  docker-compose up 
 [root@k8smaster http-ingress]# docker exec httpingress_envoy_1  ip a
