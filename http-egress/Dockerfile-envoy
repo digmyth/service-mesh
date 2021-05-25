@@ -1,0 +1,2 @@
+FROM envoyproxy/envoy-alpine:v1.18.3
+RUN apk update && apk --no-cache add curl
