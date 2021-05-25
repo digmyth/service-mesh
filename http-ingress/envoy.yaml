@@ -12,8 +12,6 @@ static_resources:
           codec_type: AUTO
           route_config:
             name: test_route
-          route_config:
-            name: test_route
             virtual_hosts:
             - name: web_service_1
               domains: ["*"]
