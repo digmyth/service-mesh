@@ -1,0 +1,28 @@
+version: '3'
+services:
+  envoy:
+    image: envoyproxy/envoy-alpine:v1.18.3
+    volumes:
+    - ./envoy.yaml:/etc/envoy/envoy.yaml
+    networks:
+      envoymesh:
+        aliases:
+        - envoy
+    environment:
+      ENVOY_UID: 0
+    depends_on:
+    - mainserver
+    ports:
+      - "80:80"
+      - "8001:8001"
+
+  mainserver:
+    image: ikubernetes/mini-http-server:v0.3
+    networks:
+      envoymesh:
+        aliases:
+        - webserver
+        - httpserver
+
+networks:
+  envoymesh: {}
