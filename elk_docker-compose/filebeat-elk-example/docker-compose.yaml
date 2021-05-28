@@ -1,0 +1,57 @@
+version: '3.3'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - "discovery.type=single-node"
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      elastic:
+        aliases:
+          - es
+    ports:
+      - 9200:9200
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.12.0
+    container_name: kib01
+    environment:
+      ELASTICSEARCH_URL: http://es01:9200
+      ELASTICSEARCH_HOSTS: '["http://es01:9200"]'
+    networks:
+      elastic:
+        aliases:
+          - kibana
+    ports:
+      - 5601:5601
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.12.0
+    networks:
+      elastic:
+        aliases:
+          - filebeat
+          - fb
+    user: root
+    volumes:
+    - ./filebeat/filebeat.yaml:/usr/share/filebeat/filebeat.yml:ro
+    - /var/lib/docker:/var/lib/docker:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  data01:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
