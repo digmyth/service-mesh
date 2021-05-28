@@ -17,6 +17,6 @@ docker-compose  -f xxx.yaml rm
 ```
 
 ### 总结
-1 多次修改docker-compose并多次执行docker-compose启动容器有可能造成容器卷数据混乱报错，可以执行`docker-compose  -f xxx.yaml down  -v `同时删除卷再up
+1 多次修改docker-compose并多次执行docker-compose启动容器有可能造成容器卷数据混乱报错，可以执行docker-compose  -f xxx.yaml down  -v同时删除卷再up
 
 2 多练习多总结，去日良多
