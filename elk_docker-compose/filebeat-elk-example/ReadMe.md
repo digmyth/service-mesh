@@ -7,7 +7,7 @@
 * elasticsearch: 作用是日志检索，日志存储。
 * kibana:   作用是visulize界面展示。
 
-由于是测试环境，这里利用filebeat收集容器宿主机下/var/log/container/*/*.log日志直接发送给elasticsearch,最后通过kibana进行展示。
+由于是测试环境，这里利用filebeat收集容器宿主机下/var/lib/docker/containers/*/*.log日志直接发送给elasticsearch,最后通过kibana进行展示。
 
 ```
 docker-compose up
