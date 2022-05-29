@@ -5,7 +5,7 @@
 
 #  部署backend服务
 ```
-#kubectl apply -f  01-deploy-backend.yaml
+#kubectl apply -f  01-deploy-backend.yaml -n smi
 # curl  http://backend:8082
 ```
 # 部署新的 proxy virtualService
