@@ -1,4 +1,6 @@
-# 使用
+#  场景说明
+仅是类似客户端、前端应用、后端应用的逻辑例子
+
 ```
 kubectl apply -f 01-demoapp-deploy.yaml
 kubectl apply -f 02-deploy-proxy.yaml
