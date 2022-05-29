@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: proxy-gateway
+  namespace: istio-system
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "fe.done.com"
+---
+
+# 开放外部能访问
