@@ -10,7 +10,7 @@ root@client /# curl 127.0.0.1:15000/listeners
 root@client /# curl 127.0.0.1:15000/clusters
 root@client /# while true;do curl demoappv10:8080;sleep 0.$RANDOM;done  #  回到kiali看图
 
-#  curl  proxy  #  一样可以访问
+root@client /# while true;do curl proxy/hostname ;sleep 0.$RANDOM;done
 ```
 
 # 总结
