@@ -1,5 +1,7 @@
-# 例子中的域名绑定IP
+# 例子中的绑定IP
+例子中的svc开放到外网，除了NodePort外，还有可以添加externalIPs实现，此IP绑定域名kiali.done.com就可以访问了
 ```
+# kubectl edit  svc/istio-ingressgateway -n istio-system
 spec:
   allocateLoadBalancerNodePorts: true
   clusterIP: 10.111.198.43
