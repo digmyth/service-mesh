@@ -56,7 +56,13 @@ spec:
         host: proxy
 
 ```
-# 总结
-在subset子集的加持下，就不必为每个demoapp版本创建一个svc
 
+应用下
+```
+kubectl apply -f  07-gateway-proxy.yaml   # istio-system名称空间
+kubectl apply -f  08-virtualservice-proxy.yaml -n smi   # 网格名称空间
+```
+# 总结
+* 在subset子集的加持下，就不必为每个demoapp版本创建一个svc
+* 注意部署时有相应的网格名称空间
 
