@@ -2,6 +2,11 @@
 ```
 kubectl apply -f 01-demoapp-deploy.yaml
 kubectl apply -f 02-deploy-proxy.yaml
+```
+
+# 网格内验证
+网格内启动一个容器当客户端发起请求
+```
 # kubectl run client  --image=ikubernetes/admin-box -it --rm --restart=Never -n smi  --command -- /bin/bash
 If you don't see a command prompt, try pressing enter.
 root@client /#  curl demoappv10:8080
