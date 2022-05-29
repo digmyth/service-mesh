@@ -20,4 +20,4 @@ spec:
 
 
 # istio默认会把所有k8s svc转换为envoy的cluster,并应用在envoy的Egress Cluster上，便于随意某应用能访问网络内任意服务或应用，因为网格不知道你的应用想访问哪个应用(打了kubectl label namespace default istio-injection=enabled标签的名称空间)
-#
+# 能查到 istioclt proxy-config  cluster  xxxenvoy.xx_namespace
