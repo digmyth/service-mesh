@@ -10,7 +10,7 @@
 - 身份认证和授权检查：身份认证、访问控制(黑白名单、ABAC基于属性的访问控制、RBAC基于权限的访问控制)
 
 # 断路器
-Envoy断路器： 是envoy的circuit Breader 功能
-Istio断路器： 是envoy的outlier Detection异常值检测
+* Envoy断路器： 是envoy的circuit Breader 功能
+* Istio断路器： 是envoy的outlier Detection异常值检测
 
 
