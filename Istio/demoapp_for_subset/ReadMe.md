@@ -13,5 +13,6 @@ root@client /#  curl  proxy/canary v1.1
 ```
 
 # 总结
-无
+在subset子集的加持下，就不必为每个demoapp版本创建一个svc
+
 
