@@ -15,8 +15,45 @@ root@client /#  curl  proxy/canary v1.1
 
 
 # 外部特定域名访问
+```
+# cat 07-gateway-proxy.yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: proxy-gateway
+  namespace: istio-system        # 要指定为ingress gateway pod所在名称空间
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "fe.done.com"
+```
 
 
+```
+# 08-virtualservice-proxy.yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: proxy
+spec:
+  hosts:
+  - "fe.done.com"                     # 对应于gateways/proxy-gateway
+  gateways:
+  - istio-system/proxy-gateway       # 相关定义仅应用于Ingress Gateway上
+  #- mesh
+  http:
+  - name: default
+    route:
+    - destination:
+        host: proxy
+
+```
 # 总结
 在subset子集的加持下，就不必为每个demoapp版本创建一个svc
 
