@@ -9,3 +9,7 @@ spec:
     tls:
       mode: DISABLE
 ---
+
+
+
+# kiali 部署在istio-system名称空间，由于处在网格名称空间，默认会生成kiali 与svc同名的cluster, 所以除非有高级定义，否则DestinationRule不必定义
