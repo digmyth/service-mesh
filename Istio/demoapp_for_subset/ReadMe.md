@@ -1,4 +1,5 @@
-# 说明
+# 场景说明
+网格内客户端、前端应用(直接转发给后端来做模拟)、后端应用（多个版本便于定义destinationRule subset子集）的场景例子
 
 - 部署了同一个应用，v10/v11两个版本
 - 由于`destinationrule-demoapp.yaml`定义了负载均衡器子集，所以两个版本应用的svc也不需要了，只要一个总的demoapp svc就可以了
