@@ -16,6 +16,7 @@ root@client /#  curl  proxy/canary v1.1
 
 
 # 外部特定域名访问
+istio-ingressgateway定义
 ```
 # cat 07-gateway-proxy.yaml
 apiVersion: networking.istio.io/v1beta1
@@ -35,7 +36,7 @@ spec:
     - "fe.done.com"
 ```
 
-
+istio-ingressgateway对应vs
 ```
 # 08-virtualservice-proxy.yaml
 apiVersion: networking.istio.io/v1beta1
