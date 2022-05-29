@@ -34,18 +34,18 @@ spec:
           limits:
             cpu: 50m
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: demoappv10
-spec:
-  ports:
-    - name: http
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-  selector:
-    app: demoapp
-    version: v1.0
-  type: ClusterIP
----
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: demoappv10
+#spec:
+#  ports:
+#    - name: http
+#      port: 8080
+#      protocol: TCP
+#      targetPort: 8080
+#  selector:
+#    app: demoapp
+#    version: v1.0
+#  type: ClusterIP
+#---
