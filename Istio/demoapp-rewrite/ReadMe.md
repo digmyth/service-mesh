@@ -11,7 +11,7 @@
 # 部署新的 proxy virtualService
 ```
 # kubectl  delete vs/proxy -n smi   # 此前定义过外部proxy vs,需要合并在新的vs里
-# kubectl apply -f  02-virtualservice-proxy.yaml  # 合并后的
+# kubectl apply -f  02-virtualservice-proxy.yaml  -n smi  # 合并后的
 ```
 # 验证
 网格内部客户端容器
