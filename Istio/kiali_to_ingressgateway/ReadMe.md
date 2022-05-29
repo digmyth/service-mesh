@@ -1,3 +1,17 @@
+# 例子中的域名绑定IP
+```
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.111.198.43
+  clusterIPs:
+  - 10.111.198.43
+  externalIPs:
+  - 10.18.0.148
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+```
+
 # 基本操作
 ```
 kubectl get crds 
@@ -39,7 +53,6 @@ kubectl create ns smi
 kubectl label namespace smi istio-injection=enabled
 kubectl create deployment demoappv10 --image=ikubernetes/demoapp:v1.0 --replicas=3 --dry-run=client -o yaml
 kubectl create service clusterip demoappv10 --tcp=8080:8080 --dry-run=client -o yaml
-
 ```
 # 总结
-无
+kubectl apply -f . 代码中的例子，通过域名可访问到 kiali
