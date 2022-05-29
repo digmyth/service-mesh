@@ -6,6 +6,12 @@ metadata:
 spec:
   hosts:
   - proxy
+  - "fe.done.com"
+  gateways:
+  - istio-system/proxy-gateway
+  - mesh
+  http:
+  - name
   http:
   - name: redirect
     match:
@@ -19,6 +25,8 @@ spec:
     route:
     - destination:
         host: proxy
+---
+
 ---
 #curl http://proxy/backend  重定向到 -->  curl http://backend:8082/
 #    redirect:  # 注意这里的拼接 http://<authority>:<port><uri>
