@@ -25,3 +25,14 @@ spec:
 #      uri: /
 #      authority: backend
 #      port: 8082
+
+
+#网格内部验证可以看到拿到了重定向结果
+#root@client /# while true;do curl -I   proxy/backend;sleep 0.$RANDOM;done
+#HTTP/1.1 301 Moved Permanently
+#location: http://backend:8082/
+#date: Sun, 29 May 2022 10:00:05 GMT
+#server: envoy
+#transfer-encoding: chunked
+
+#  curl  http://backend:8082/  # 原本就是可以访问的
