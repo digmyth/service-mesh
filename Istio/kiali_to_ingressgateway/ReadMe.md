@@ -57,4 +57,4 @@ kubectl create deployment demoappv10 --image=ikubernetes/demoapp:v1.0 --replicas
 kubectl create service clusterip demoappv10 --tcp=8080:8080 --dry-run=client -o yaml
 ```
 # 总结
-kubectl apply -f . 代码中的例子，通过域名可访问到 kiali
+kubectl apply -f . 代码中的例子，通过域名kiali.done.com可访问到 kiali UI
