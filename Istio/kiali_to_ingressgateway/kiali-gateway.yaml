@@ -1,0 +1,27 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: kiali-gateway
+  namespace: istio-system
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - port:
+      number: 80    # `kubectl  get  svc -n istio-system  | grep  istio-ingressgateway` 可见端口
+      name: http-kiali
+      protocol: HTTP
+    hosts:
+    - "kiali.done.com"
+---
+
+#  上面number端口不可见时一定要通过`kubectl  edit  svc/istio-ingressgateway -n istio-system`定义出来
+# ports:
+#    - name: http-kiali
+#      nodePort: 31997
+#      port: 20001
+#      protocol: TCP
+#      targetPort: 20001
+
+
