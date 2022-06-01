@@ -16,6 +16,7 @@
 # 验证
 网格内部客户端容器
 ```
+# kubectl run client  --image=ikubernetes/admin-box -it --rm --restart=Never -n smi  --command -- /bin/bash
 curl proxy
 curl proxy/canary
 curl -I proxy/backend   #  拿到重定向结果
