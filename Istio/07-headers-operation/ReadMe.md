@@ -36,12 +36,27 @@ spec:
 ```
 
 # 验证
+- 请求报文带上标头，返回的报文也打上了x-canary-202: true-202 标头，成功的
 
 ```
-root@client /# curl -H  "x-canary: true" demoapp:8080
-iKubernetes demoapp v1.1 !! ClientIP: 127.0.0.6, ServerName: demoappv11-77755cdc65-qljf8, ServerIP: 10.244.2.97!
-root@client /#
+root@client /# curl -I  -H  "x-canary: true" demoapp:8080
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+content-length: 113
+server: envoy
+date: Wed, 01 Jun 2022 11:37:16 GMT
+x-envoy-upstream-service-time: 3
+x-canary-202: true-202
 ```
+
+- 浏览器类型是不是我们定义的,默认流量的User-Agent: curl/7.67.0, 匹配上特定标头流量会被重新改写user-agent, 验证成功的
+```
+root@client /# curl    demoapp:8080/user-agent
+User-Agent: curl/7.67.0
+root@client /# curl   -H  "x-canary: true" demoapp:8080/user-agent
+User-Agent: Chrome
+```
+
 
 # 总结
 无
