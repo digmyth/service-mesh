@@ -7,7 +7,7 @@
    fault:
       abort:
         percentage:
-          value: 20
+          value: 20   # 百分之20流量发生中断故障
         httpStatus: 555
   - name: default
     route:
@@ -17,11 +17,36 @@
     fault:
       delay:
         percentage:
-          value: 20
+          value: 20   # 百分之20流量发生延迟故障
         fixedDelay: 3s
 ```
 
-#  验证
+# 在proxy Envoy设置服务任性容错策略
+```
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: proxy
+spec:
+  hosts:
+  - "fe.magedu.com"                     # 对应于gateways/proxy-gateway
+  gateways:
+  - istio-system/proxy-gateway       # 相关定义仅应用于Ingress Gateway上
+  #- mesh
+  http:
+  - name: default
+    route:
+    - destination:
+        host: proxy
+    timeout: 1s
+    retries:
+      attempts: 5
+      perTryTimeout: 1s
+      retryOn: 5xx,connect-failure,refused-stream
+
+```
+
+# 验证
 
 
 # 总结
