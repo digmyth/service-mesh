@@ -26,7 +26,7 @@ spec:
             x-canary-202: "true-202"    # 响应回客户端时添加标头
   - name: default
     headers:
-      response:      # 默认响应回客户端时添加的标头
+      response:      # 对下面定义的所有destination都生效(默认响应回客户端时添加的标头)
         add:
           X-Envoy: test
     route:
