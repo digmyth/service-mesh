@@ -1,4 +1,5 @@
-# 
+# 示例代码clone
+[代码示例仓库](https://github.com/iKubernetes/knative-in-practise.git)
 
 
 # 小记
@@ -8,4 +9,4 @@
 - 查看方法istioctl proxy-config listeners  xx_pod.xx_namespace
 
 # 总结
-
+马哥精品，必属精品
