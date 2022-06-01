@@ -57,6 +57,18 @@ root@client /# curl   -H  "x-canary: true" demoapp:8080/user-agent
 User-Agent: Chrome
 ```
 
+- 默认返回流量也带标头
+```
+root@client /# curl  -I   demoapp:8080/user-agent
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+content-length: 24
+server: envoy
+date: Wed, 01 Jun 2022 11:43:42 GMT
+x-envoy-upstream-service-time: 33
+x-envoy: test
+```
+
 
 # 总结
 无
