@@ -12,7 +12,12 @@ kubectl apply -f  06-weight-based-routing/virtualservice-demoapp.yaml -n smi
 ```
 
 # 测试
-
+curl多次，9成流量在v10, 1成流量在v11
+```
+# kubectl run client  --image=ikubernetes/admin-box -it --rm --restart=Never -n smi  --command -- /bin/bash
+# curl proxy/     # 多次
+# curl proxy/hostname    # 多次
+```
 
 # 总结
 无 
