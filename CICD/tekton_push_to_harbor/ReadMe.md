@@ -76,7 +76,11 @@ harbor A 10.18.0.151
 
 ```
 
-
+# test 
+```
+host -t A  harbor.done.com  dnsserver-ip
+dig +short harbor.done.com  @dnsserver-ip
+```
 
 # Source to Image   from kaniko
 
