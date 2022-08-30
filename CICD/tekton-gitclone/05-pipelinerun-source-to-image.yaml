@@ -3,7 +3,7 @@ kind: PipelineRun
 metadata:
   name: s2i-image-push-run-00001
 spec:
-  serviceAccountName: build-bot
+  serviceAccountName: build-bot    # 添加行
   pipelineRef:
     name: source-to-image
   params:
