@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-code
+spec:
+  description: Clone the code repository to the workspace.
+  steps:
+    - name: git-clone
+      image: alpine/git:v2.36.1
+      script: git clone -b master -v git@gitlab.done.com:gitlab-instance-047ae1d5/spring-helloworld.git
