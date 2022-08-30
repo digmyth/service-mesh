@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: s2i-image-push-run-00001
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: source-to-image
+  params:
+    - name: git-url
+      #value: https://gitee.com/mageedu/spring-boot-helloWorld.git
+      value: git@gitlab.done.com:gitlab-instance-047ae1d5/spring-helloworld.git
+    - name: image-url
+      value: harbor.done.com/project01/spring-boot-helloworld
+    - name: image-tag
+      value: v0.9.1
+  workspaces:
+    - name: codebase
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+          storageClassName: nfs-csi
+    - name: docker-config
+      secret:
+        secretName: docker-config
