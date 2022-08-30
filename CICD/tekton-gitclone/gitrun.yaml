@@ -1,0 +1,8 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: git-code-task-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: git-code
