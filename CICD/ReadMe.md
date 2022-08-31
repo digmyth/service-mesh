@@ -78,7 +78,8 @@ root@node01:~# tree  /root/.docker/
 └── config.json
 ```
 
-
-
+```
+crictl  pull  harbor.xxx.com/project01/spring-boot-helloworld:v0.9.2
+```
 
 
