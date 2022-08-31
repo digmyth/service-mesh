@@ -78,6 +78,7 @@ root@node01:~# tree  /root/.docker/
 └── config.json
 ```
 
+这样一样能认证到https://
 ```
 crictl  pull  harbor.xxx.com/project01/spring-boot-helloworld:v0.9.2
 ```
