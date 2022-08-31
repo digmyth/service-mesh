@@ -50,4 +50,6 @@ spec:
 
 ```
 tkn  task start  --showlog xx -p git-repo="git@gitlab.xx.com/xx.git" -w name=source,emptyDir=""
+tkn task start --showlog source-lister  -p git-repo="git@gitlab.done.com:gitlab-instance-047ae1d5/spring-helloworld.git" -w name=source,emptyDir="" -s build-bot
+
 ```
