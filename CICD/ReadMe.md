@@ -51,5 +51,34 @@ spec:
 ```
 tkn  task start  --showlog xx -p git-repo="git@gitlab.xx.com/xx.git" -w name=source,emptyDir=""
 tkn task start --showlog source-lister  -p git-repo="git@gitlab.done.com:gitlab-instance-047ae1d5/spring-helloworld.git" -w name=source,emptyDir="" -s build-bot
+```
+
+###  harbor认证
+k8s node节点是docker虚拟化还好，这个按照harbor官方文档来就行，但是k8s node 是crio是不是懵逼了，这里经过验证其实是一样的，把在docker主机上的几个文件复制过来放好就行，就是这么简单
+```
+root@node01:~# tree  /etc/docker/
+/etc/docker/
+├── certs.d
+│   └── harbor.done.com
+│       ├── ca.cert
+│       ├── ca.crt
+│       ├── ca.key
+│       ├── harbor.x.com.cert
+│       ├── harbor.x.com.crt
+│       ├── harbor.x.com.csr
+│       ├── harbor.x.com.key
+│       ├── tls-generate.sh
+│       └── v3.ext
+└── key.json
+```
 
 ```
+root@node01:~# tree  /root/.docker/
+/root/.docker/
+└── config.json
+```
+
+
+
+
+
