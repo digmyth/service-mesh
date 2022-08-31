@@ -12,3 +12,13 @@ kubectl create secret generic ssh-secret  \
 ```
 kubectl apply -f secret.yaml
 ```
+
+
+```
+tkn task list
+tkn task start --showlog hello
+tkn taskrun list
+tkn taskrun logs xxx-taskrun
+kubectl get taskrun/xxxx -o yaml
+
+```
