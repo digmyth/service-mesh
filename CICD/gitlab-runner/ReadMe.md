@@ -1,4 +1,5 @@
 ### 安装
+安装gitlab-runner
 ```
 https://docs.gitlab.com/runner/install/linux-repository.html
 curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
@@ -14,6 +15,19 @@ gitlab-runner |     15.0.0 | https://packages.gitlab.com/runner/gitlab-runner/ub
 root@u22-025:~# apt-get install gitlab-runner=15.2.0
 ```
 
+注册gitlab-runner
+```
+gitlab-runner  register  \
+ --no-interactive \
+ --excutor "shell" \
+ --url "http://xx"  \
+ --registration-token "xxx" \
+ --description "xx"  \
+ --tag-list  "build,deploy"  \
+ --run-untagged "true" \
+ --locked "false"  \
+ --access-level "not_protected"
+```
 
 
 ### 使用
