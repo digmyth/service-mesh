@@ -17,16 +17,8 @@ root@u22-025:~# apt-get install gitlab-runner=15.2.0
 
 注册gitlab-runner
 ```
-gitlab-runner  register  \
- --no-interactive \
- --excutor "shell" \
- --url "http://xx"  \
- --registration-token "xxx" \
- --description "xx"  \
- --tag-list  "build,deploy"  \
- --run-untagged "true" \
- --locked "false"  \
- --access-level "not_protected"
+gitlab-runner  register   --no-interactive  --excutor "shell"  --url "http://xx"   --registration-token "xxx" \
+ --description "xx"   --tag-list  "build,deploy"   --run-untagged "true"  --locked "false"   --access-level "not_protected"
 ```
 
 
