@@ -18,7 +18,8 @@ root@u22-025:~# apt-get install gitlab-runner=15.2.0
 注册gitlab-runner
 ```
 gitlab-runner  register --non-interactive --executor "shell"  --url http://gitlab.done.com:8085/  \
---registration-token "iKFYZpD3-a9tWDHdBGMn" --description"runner test" --tag-list  "build,deploy" --run-untagged=true --locked=false --access-level "not_protected"
+--registration-token "iKFYZpD3-a9tWDHdBGMn" --description"runner test" --tag-list  "build,deploy"  \
+--run-untagged=true --locked=false --access-level "not_protected"
 ```
 
 
