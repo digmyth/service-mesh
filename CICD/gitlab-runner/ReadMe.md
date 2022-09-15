@@ -22,6 +22,30 @@ gitlab-runner  register --non-interactive --executor "shell"  --url http://gitla
 --run-untagged=true --locked=false --access-level "not_protected"
 ```
 
+生成配置文件config.toml
+```
+root@gitlab:~# cat  /etc/gitlab-runner/config.toml
+concurrent = 1
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "runner test"
+  url = "http://git02.done.com/"
+  id = 1
+  token = "j4AGhPAVHjYyc6gGPXX2"
+  token_obtained_at = 2022-09-15T07:03:24Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+
+```
 
 ### 使用
 
