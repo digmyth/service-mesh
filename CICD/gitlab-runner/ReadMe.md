@@ -53,9 +53,9 @@ check_interval = 0
 ### 使用
 * 1  gitlab-runner机安装java，并/etc/profile配置JAVA_HOME
 * 2  gitlab-runner机安装maven并修改阿里源
-* 3  gitlab-runner机安装docker,并配置/etc/docker/certs.d证书和/home/gitlab-runner/.docker/config.json账号密码
+* 3  gitlab-runner机安装docker,并配置/etc/docker/certs.d证书和/home/gitlab-runner/.docker/config.json账号密码以ush镜像到harbor仓库,usermod -aG docker gitlab-runner
 * 4  gitlab-runner机安装argocd客户端命令
-* 5  gitlab-runner机安装。。
+* 5  gitlab-runner机安装测试sudo -u gitlab-runner  -H docker info
 
 ###  总结
 无
