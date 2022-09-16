@@ -1,3 +1,4 @@
+#  自动同步k8s deployment yaml中镜像tag进行配置仓库更新，再argocd app sync x1到项目
 stages:
   - build-pkg
   - build-and-push_image
