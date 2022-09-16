@@ -1,0 +1,51 @@
+stages:
+  - build-pkg
+  - build-and-push_image
+  - deploy
+  
+variables:
+  image_url: harbor.done.com/project01/spring-boot-helloworld
+  image_version: v1.1 
+  CACHE_DIR: target/
+
+cache:
+  paths:
+    - $CACHE_DIR
+
+build-pkg:
+  stage: build-pkg
+  script:
+    - mvn clean install
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 day
+
+build-and-push_image:
+  stage: build-and-push_image
+  before_script:
+    - docker info
+    - echo  $(date +%Y%m%d-%H%M%S) > /tmp/build_time.txt
+  script:
+    - export build_time=$(cat /tmp/build_time.txt)
+    - docker login harbor.done.com # /home/gitlab-runner/.docker/config.json
+    - docker build -t ${image_url}:${build_time}-${image_version} .
+    - docker push  ${image_url}:${build_time}-${image_version}
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - export build_time=$(cat /tmp/build_time.txt)
+    - rm  -rf /tmp/deploy
+    - export image01=${image_url}:${build_time}-${image_version}
+    - cd /tmp && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone  git@gitlab.done.com:gitlab-instance-047ae1d5/deploy.git
+    - sed -i "s#harbor.done.com/project01/.*#$image01'#" /tmp/deploy/deploy/all-in-one.yaml
+    - cd /tmp/deploy; 
+    - git config --global user.email "gitlab@git.k8s.local"
+    - git config --global user.name "root"  
+    - git add .;git commit -m 'x';git push origin --all
+    - argocd  login argocd.done.com:32267  --insecure  --username admin  --password rLYs5B0iMhIzcOxL
+    - argocd app get x1 --refresh
+    - argocd  app  sync x1
