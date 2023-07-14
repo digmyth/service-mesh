@@ -51,4 +51,6 @@
 * Envoy断路器： 是envoy的circuit Breaker 功能
 * Istio断路器： 是envoy的outlier Detection异常值检测
 
-
+```
+经历2代服务网格： 第1代服务网格没有控制平面，实现方式以sidecar的方式实现，替代传统必须由微服务治理框架spring cloud,double等，必须借住服务框架的SDK去开发微服务，将各种高级网络功能直接内置在应用程序内部，通过sidecar把SDK所实现的高级网络功能通过proxy来完成，该proxy以sidecar的方式运行在微服务组件的每一个应用程序周边，从此以后程序员再也不用了解服务治理框架是如何实现的，而且可以使用任何编程语言来开发微服务，有了side car代理后，对程序员极其友好，但是对管理员不友好，众多sidecar无法管理，envoy内置支持xds协议，，借住management server动态配置listener, cluser,endpoint,route,(LDS,EDS,CDS,RDS还可以独立使用management server),第一代网格急需有一个management server实现依赖到的功能，以简化用户配置，有了management server，用户还要精准了解envoy API and XDS协议，才能正确配置sidecar,让management Server配置下发给sidecar,这样看上去简便，但难度还是极为不便，那么服务网格2代来了，服务网格控制平面（有规范SMI），不但要完成management server功能，还需要实现将底层data plane中工作于各个应用程序周边的sidecar proxy提供的API抽象出来，便于用户进行配置，ISTIO作为控制平面最为典型的实现之一，核心功能即是实现management server 给各个proxy,还需要将底层数据平面提供的API以新式的控制平面API输出来，用户只需遵循控制平面API定义的网格配置，而后由控制平面转换为数据平面proxy API支持的格式，并完成下发。
+```
