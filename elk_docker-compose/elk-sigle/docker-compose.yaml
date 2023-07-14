@@ -21,6 +21,7 @@ services:
       - 9200:9200
     volumes:
       - data01:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.12.0
