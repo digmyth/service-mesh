@@ -1,4 +1,4 @@
-跟据马哥公开课学习书写
+根据马哥公开课学习书写
 
 ```
 kubectl create secret generic ssh-secret  \
